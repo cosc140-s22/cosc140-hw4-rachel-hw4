@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, reverse_lazy
+from django.shortcuts import redirect
+#DO I NEED THIS LINE TO FIX THE REDIRECT ERROR?!?!? ^^^^^
+from products import views
+from django.conf import settings
+from django.conf.urls.static import static 
+
+def root_redirect(request):
+    return redirect(reverse_lazy('index'))
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('products/', views.index, name='index'),
+    path('products/<int:product_id>', views.show, name='show'),
+    path('', root_redirect),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

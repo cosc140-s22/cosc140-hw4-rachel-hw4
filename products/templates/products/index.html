@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+<block>
+  
+
+{% block content %}
+
+  <table class="table">
+    <thead>
+     
+       <th>Name</th>
+       <th>Description</th>
+       <th>Age Range</th>
+       <th>Price</th>
+    
+    </thead>
+    <tbody>
+{% for p in products %} 
+       <tr>
+        <td><a href="{% url 'show' p.id %}">{{ p.name }}</a></td>
+        <td>{{ p.description|truncatewords_html:5 }}</td>
+        <td class="align">{{ p.age_range }}</td>
+        <td class="align">{{ p.price|floatformat:2 }}</td>
+    {% empty %}
+        <td>Sorry, no toys at the moment.</td>
+    {% endfor %}
+       </tr>
+    </tbody>
+</h2>
+
+
+</block>
+
+
+{% endblock %}
