@@ -9,5 +9,10 @@
    I liked the hw, I thought the instructions were pretty clear for the most part. I'm just worried I may have missed a step or something
 ## Feedback
 
-Once you commit and submit your work to Github, I'll update this section with feedback.
+N
+
+The `age_range` method in your model class needs just a little bit more work.  If maximum age is -1, your method should return "Ages 1 and up" (if minimum age is 1).  If you run ./manage.py test you'll see that it doesn't quite do that.
+
+Once you fix that, you'll see one more problem when you run ./manage.py test.  Consider the order if your `elif` parts in that method -- that's what is causing the issue.
+
 
